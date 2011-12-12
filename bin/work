@@ -1,0 +1,6 @@
+#!/bin/sh
+# Filename: ~/bin/work
+# This script sets Git to use the SOCKS proxy
+export GIT_SSH="${HOME}/etc/bin/socks-ssh"
+export GIT_PROXY_COMMAND="${HOME}/etc/bin/socks-gw"
+

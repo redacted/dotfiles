@@ -1,0 +1,48 @@
+*~
+.DS_Store
+profile
+tags
+
+
+*.swp
+*~.nib
+*.pbxproj -crlf -diff -merge
+build/**/*
+
+*.pbxuser
+*.perspective
+*.perspectivev3
+*.tmproj
+
+*.mode1v3
+*.mode2v3
+
+*.tm_build_errors
+
+# my stuff
+*.dat
+*.txt
+tmp/*
+backup/*
+*.tar
+*.zip
+
+# code stuff
+*.o
+*.out
+*.x
+*.pyc
+
+# latex build and temp files
+*.aux
+*.log
+*.maf
+*.mtc
+*.mtc2
+*.mtc3
+*.ps
+*.dvi
+*.blg
+*.fdb_latexmk
+
+

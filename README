@@ -1,0 +1,3 @@
+This is a pretty standard set of dotfiles for my commonly used programs - vim, zsh, git, and MacVim. It is moderately OS X centric, but works on Linux with some very minor tweaks. 
+
+install.py sets the system up. Configure as needed before running (there aren't many safety checks)!

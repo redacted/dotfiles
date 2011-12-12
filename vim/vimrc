@@ -1,0 +1,348 @@
+" -----------------------------------------------------------------------------  
+" |                            VIM Settings                                   |
+" |                   (see gvimrc for gui vim settings)                       |
+" -----------------------------------------------------------------------------  
+
+set nocompatible
+filetype off
+
+" -----------------------------------------------------------------------------  
+" |                         Vundle Config                                     |
+" -----------------------------------------------------------------------------  
+
+set rtp+=~/etc/vim/bundle/vundle/
+call vundle#rc()
+
+" required! 
+Bundle 'gmarik/vundle'
+
+" my bundles below
+Bundle 'wincent/Command-T'
+Bundle 'tpope/vim-fugitive'
+Bundle 'sjl/gundo.vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-markdown'
+Bundle 'chrisbra/NrrwRgn'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'tpope/vim-pathogen'
+Bundle 'ervandew/supertab'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'kevinw/pyflakes-vim'
+Bundle 'gregsexton/gitv'
+Bundle 'majutsushi/tagbar'
+Bundle 'mikewest/vimroom'
+
+Bundle 'vim-scripts/TaskList.vim'
+Bundle 'vim-scripts/LaTeX-Box'
+Bundle 'vim-scripts/Rainbow-Parenthesis'
+Bundle 'vim-scripts/VimClojure'
+Bundle 'vim-scripts/IndexedSearch'
+Bundle 'vim-scripts/matchit.zip'
+Bundle 'vim-scripts/xoria256.vim'
+Bundle 'vim-scripts/Liquid-Carbon'
+Bundle 'vim-scripts/a.vim'
+Bundle 'vim-scripts/ack.vim'
+Bundle 'vim-scripts/AutoTag'
+Bundle 'vim-scripts/vimwiki'
+Bundle 'vim-scripts/UltiSnips'
+
+ " Brief help
+ " :BundleList          - list configured bundles
+ " :BundleInstall(!)    - install(update) bundles
+ " :BundleSearch(!) foo - search(or refresh cache first) for foo
+ " :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+ "
+ " see :h vundle for more details or wiki for FAQ
+ " NOTE: comments after Bundle command are not allowed..
+ "
+ "
+ "" original repos on github
+ "Bundle 'tpope/vim-fugitive'
+ " vim-scripts repos
+ "Bundle 'L9'
+ " non github repos
+ "Bundle 'git://git.wincent.com/command-t.git'
+filetype plugin indent on
+
+"" vundle end  ****************************************************************
+
+" Vim 7.3+ features go here
+set colorcolumn=80,120
+set undofile
+set undodir=$HOME/temp/vim_undo/                      "this is for undo files
+
+set modelines=0
+set hidden " switch between buffers with unsaved changes
+set shortmess+=I "no startup message
+set encoding=utf-8
+set ttyfast
+
+" Tabs ************************************************************************
+" Use 4 spaces
+set softtabstop=4
+set shiftwidth=4
+set tabstop=4
+set expandtab
+
+set ve=all " select anywhere (allow block selection like TM)
+set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:‗
+"set list
+
+" Reconfigure leader
+let mapleader = ","
+let g:mapleader = ","
+
+
+" Indenting *******************************************************************
+set ai " Automatically set the indent of a new line (local to buffer)
+"set cindent " indentation of C files
+
+" Set to auto read when a file is changed from the outside
+set autoread
+autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
+
+" Folding    ******************************************************************
+" use syntax based folding
+set foldmethod=syntax
+
+" Scrollbars ******************************************************************
+set sidescrolloff=2
+set numberwidth=4
+
+" Windows *********************************************************************
+set equalalways " Multiple windows when created are equal in size
+set splitbelow splitright
+set title
+
+" Movement between split
+map <C-J> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_
+map <C-H> <C-W>h<C-W>_
+map <C-L> <C-W>l<C-W>_
+
+
+"Vertical split then hop to new buffer
+noremap <leader>v :vsp<cr>
+noremap <leader>h :split<cr>
+
+" System copy-paste on OS X
+"set clipboard+=unnamed
+
+" Cursor highlights ***********************************************************
+ set cursorline
+" set cursorcolumn
+
+" Colors **********************************************************************
+set t_Co=256 " 256 colors
+syntax on " syntax highlighting
+
+set background=dark
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
+colorscheme solarized
+
+" attempt to fix scroll breaking syntax
+syn sync minlines=250
+
+" Searching *******************************************************************
+set hlsearch  " highlight search
+set incsearch  " incremental search search as you type
+set ignorecase " Ignore case when searching 
+set smartcase " Ignore case when searching lowercase
+"set gdefault " global in line by default
+
+" Status Line *****************************************************************
+set laststatus=2
+set statusline=%{fugitive#statusline()}%=%l,%v\ %p%% 
+set showcmd
+set ruler " Show ruler
+
+" Line Wrapping ***************************************************************
+set wrap
+set linebreak  " Wrap at word
+
+
+" Setup backup location and enable
+set backup
+set backupdir=$HOME/temp/vim_backups/                      "where to put those backups
+set directory=$HOME/temp/vim_swp/                      "this is for swp files
+
+set spellfile=$HOME/etc/vim/bundles/_spelling/spell/en.utf-8.add
+
+" File Stuff ******************************************************************
+
+au BufRead,BufNewFile *.cuh  set filetype=cpp
+au BufRead,BufNewFile *.cu  set filetype=cpp
+au BufRead,BufNewFile *.txt  set filetype=text
+
+
+" Sessions ********************************************************************
+" Sets what is saved when you save a session
+set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
+set history=100
+
+
+" Misc ************************************************************************
+set backspace=indent,eol,start
+set number " Show line numbers
+set matchpairs+=<:>
+set vb t_vb= " Turn off the bell, this could be more annoying, but I'm not sure how
+" Swap word with next word
+nmap <silent> gw    "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<cr><c-o><c-l> *N*
+
+" Mouse ***********************************************************************
+set mouse=a " Enable the mouse
+set ttymouse=xterm
+behave xterm
+set selectmode=mouse
+set mousemodel=popup  " right click menu
+
+" Cursor Movement *************************************************************
+"imap jj <ESC>
+set scrolloff=3
+
+" Omni Completion *************************************************************
+set ofu=syntaxcomplete#Complete
+
+" Insert mode bindings *******************************************************
+imap <C-tab> <c-x><c-o>
+
+" emacs style :)
+imap <c-e> <c-o>$
+imap <c-a> <c-o>^
+
+
+" -----------------------------------------------------------------------------  
+" |                              Plugins                                     |
+" -----------------------------------------------------------------------------  
+
+" NERDTree ********************************************************************
+:noremap <leader>n :NERDTreeToggle<CR>
+
+" Use instead of Netrw when doing an edit /foobar
+let NERDTreeHijackNetrw=1
+
+" Single click for everything
+let NERDTreeMouseMode=1
+
+let NERDTreeIgnore=['\.pyc$','\.swp$', '\.tiff']                 "ignore compiled python files
+let NERDTreeSplitVertical=1                                   "and open as vsplit
+let NERDTreeChDirMode=2                                   "change working dir when I change root
+let NERDTreeShowBookmarks=1
+
+" Marks Browser ***************************************************************
+map <leader>m :MarksBrowser<CR>
+
+" Command-T ********************************************
+map <leader>f :CommandT<CR>
+map <leader>t :CommandT<CR>
+let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
+
+" Cool tab completion stuff
+set wildmenu
+set wildmode=list:longest,full
+
+" Tags
+set tags=tags;/ " searches directory upwards for tags file!
+let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+map <leader>t :TagbarToggle<CR>
+let g:tagbar_type_tex = {
+	    \ 'ctagstype' : 'latex',
+	    \ 'kinds'     : [
+	        \ 's:sections',
+	        \ 'g:graphics',
+	        \ 'l:labels',
+	        \ 'r:refs:1',
+	        \ 'p:pagerefs:1'
+	    \ ],
+	    \ 'sort'    : 0
+	\ }           
+  
+
+" Bufexplorer \be buffers \bs split \bv vsp
+let g:bufExplorerSortBy='mru'        " Sort by most recently used. 
+map <leader>b :CommandTBuffer<CR>
+
+" Tasklist
+map <leader>T <Plug>TaskList
+
+" Vimwiki
+let g:vimwiki_list=[{'path':'~/Dropbox/NotesWiki', 'path_html':'~/DropboxNotesWikiHTML'}]
+let g:vimwiki_list = [
+    \ {'path': '~/Dropbox/NotesWiki/notes/', 'index': 'HomePageVim', 'path_html': '~/Dropbox/NotesWiki_html', 'ext': '.markdown', 'auto_export': 0}
+    \ ]
+let g:vimwiki_use_mouse = 1
+let g:vimwiki_folding = 0
+
+" snipmate
+let g:snips_author='Steven Tobin'
+let g:acp_behaviorSnipmateLength=1
+
+" ultisnips
+" textmate style tab between expansion targets
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" automatically open and close the popup menu / preview window
+set completeopt=menuone,menu,longest,preview
+
+" Settings for VimClojure
+let g:vimclojure#HighlightBuiltins=1      " Highlight Clojure's builtins
+let g:vimclojure#DynamicHighlighting=1    " add new syntax to highlighting
+let g:vimclojure#ParenRainbow=1           " Rainbow parentheses'!
+let vimclojure#NailgunClient="/Users/steven/local/bin/ng"
+let vimclojure#WantNailgun=0
+let vimclojure#SplitPos="bottom"
+let vimclojure#SplitSize = 10      
+
+" Rainbow
+nmap <leader>r :RainbowParenthesesToggle<CR>
+nmap <leader>R :call rainbow_parentheses#Clear() <CR>
+
+" SuperTab
+let g:SuperTabDefaultCompletionType = "context"
+
+" latexbox
+let g:LatexBox_viewer = "open"
+"yankring
+let g:yankring_history_file = "temp/yankring_history"  
+
+" GUndo
+nnoremap <leader>u :GundoToggle<CR>
+
+" Colorschemes
+"let g:molokai_original=1
+
+" Indent guides
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
+nmap <leader>i :IndentGuidesToggle<CR>
+
+" ZoomWin
+map <leader>z :ZoomWin<CR>
+
+" VimRoom
+let g:vimroom_width = 120
+
+" -----------------------------------------------------------------------------  
+" |                              Functions                                     |
+" -----------------------------------------------------------------------------  
+                                                                                 
+" VIM as hex editor!
+map <leader>hon :%!xxd<CR>
+map <leader>hof :%!xxd -r<CR>       
+
+"switch to directory of current file
+command! CD lcd %:p:h            
+
+" Sudo to write
+cmap w!! w !sudo tee % >/dev/null
+

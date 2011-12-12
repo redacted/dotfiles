@@ -1,0 +1,5 @@
+#!/bin/sh
+# Filename: socks-ssh
+# This script opens an SSH connection through a SOCKS server
+ssh -o ProxyCommand="${HOME}/etc/bin/socks-gw %h %p" $@
+

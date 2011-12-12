@@ -1,0 +1,64 @@
+" -----------------------------------------------------------------------------  
+" |                            VIM Settings                                   |
+" |                              GUI stuff                                    |
+" -----------------------------------------------------------------------------  
+
+
+" OS Specific *****************************************************************
+"
+set background=dark
+colorscheme solarized
+
+if has("gui_macvim")
+  set fuoptions=maxvert,maxhorz " fullscreen options (MacVim only), resized window when changed to fullscreen
+  set guifont=Menlo:h12.00
+  "set guifont=Pragmata:h13.00
+  set guioptions-=T  " remove toolbar
+
+end
+
+" General *********************************************************************
+set antialias "  Antialias font
+
+" Default size of window
+set columns=120 
+set lines=50
+
+" Tab headings 
+set gtl=%t gtt=%F
+
+set cursorline
+" highlight overflowing text
+"highlight OverLength ctermbg=233 ctermfg=white guibg=#121212
+"match OverLength /\%81v.*/ 
+
+" Function to call when toggling full-screen, remove cocoa gui
+fu! ToggleFu()
+    if &fu
+        " In full-screen
+        set go+=e                   " show gui tabs
+        set go+=R
+        set go+=r
+        set go+=L
+        set nofu                    " leave full-screen
+    else
+        " In windowed mode
+        set go-=e
+        set go-=R
+        set go-=r
+        set go-=L                  " hide right-hand scrollbar
+        set go-=l
+        set fu                      " enter full-screen
+    endif
+endfu
+
+" Clear 'fuopt' so that it doesn't change 'lines' and 'columns'
+"set fuopt=
+
+" Make the 'Toggle Full Screen Mode' menu item call ToggleFu()
+aunmenu Window.Toggle\ Full\ Screen\ Mode
+an <silent> 9900.320 Window.Toggle\ Full\ Screen\ Mode  :call ToggleFu()<CR>
+
+" Rebind the 'Toggle Full Screen Mode' menu item to Cmd-Shift-F
+macm Window.Toggle\ Full\ Screen\ Mode  key=<S-D-F>
+

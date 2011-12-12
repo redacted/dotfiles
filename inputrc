@@ -1,0 +1,5 @@
+#set editing-mode vi
+
+#set -o vi
+
+#set keymap vi

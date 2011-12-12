@@ -1,0 +1,18 @@
+--sort-files
+--color
+--context=1
+--follow
+--group
+# --all
+
+# Add the .rake extension to the existing ruby type.
+--type-add
+ruby=.rake
+
+# Create a new type for Clojure source files.
+--type-set
+clojure=.clj
+
+--type-set
+cuda=.cu
+

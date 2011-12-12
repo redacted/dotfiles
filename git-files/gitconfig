@@ -1,0 +1,54 @@
+[color]
+    ui = auto
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+
+[merge]
+    tool = opendiff
+    summary = true
+
+[core]
+	excludesfile = /Users/steven/etc/git-files/gitignore
+	editor = vim
+
+[gui]
+
+[pack]
+    threads = 0
+
+[branch]
+    autosetupmerge = true
+
+[user]
+	email = tobin2402 (at) gmail.com
+	name = Steven Tobin
+
+[alias]
+    st = status -sb
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+    lg = log -p
+    lp = log --pretty=oneline
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    caa = commit -a --amend -C HEAD
+    type = cat-file -t
+    dump = cat-file -p
+
+[apply]
+    whitespace = fix
+
+[diff]
+    external = "/Users/steven/etc/bin/git_diff_wrapper"
+
+[push]
+    default = current
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
