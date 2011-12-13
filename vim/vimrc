@@ -10,11 +10,13 @@ filetype off
 " |                         Vundle Config                                     |
 " -----------------------------------------------------------------------------  
 
+" git clone http://github.com/gmarik/vundle.git ~/etc/vim/bundle/vundle
 set rtp+=~/etc/vim/bundle/vundle/
 call vundle#rc()
 
 " required! 
 Bundle 'gmarik/vundle'
+
 
 " my bundles below
 Bundle 'wincent/Command-T'
@@ -31,7 +33,6 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'tpope/vim-pathogen'
 Bundle 'ervandew/supertab'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'kevinw/pyflakes-vim'
 Bundle 'gregsexton/gitv'
 Bundle 'majutsushi/tagbar'
 Bundle 'mikewest/vimroom'
