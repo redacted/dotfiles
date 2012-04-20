@@ -45,7 +45,7 @@
     external = "/Users/steven/etc/bin/git_diff_wrapper"
 
 [push]
-    default = current
+	default = upstream
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 

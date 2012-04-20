@@ -24,6 +24,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'sjl/gundo.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
@@ -36,6 +37,8 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'gregsexton/gitv'
 Bundle 'majutsushi/tagbar'
 Bundle 'mikewest/vimroom'
+Bundle 'redacted/surface-evolver-vim'
+Bundle 'Lokaltog/vim-powerline'
 
 Bundle 'vim-scripts/TaskList.vim'
 Bundle 'vim-scripts/LaTeX-Box'
@@ -97,11 +100,6 @@ set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:‗
 let mapleader = ","
 let g:mapleader = ","
 
-
-" Indenting *******************************************************************
-set ai " Automatically set the indent of a new line (local to buffer)
-"set cindent " indentation of C files
-
 " Set to auto read when a file is changed from the outside
 set autoread
 autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
@@ -142,11 +140,11 @@ set t_Co=256 " 256 colors
 syntax on " syntax highlighting
 
 set background=dark
+colorscheme solarized
 let g:solarized_termtrans=1
 let g:solarized_termcolors=256
 let g:solarized_contrast="high"
 let g:solarized_visibility="high"
-colorscheme solarized
 
 " attempt to fix scroll breaking syntax
 syn sync minlines=250
@@ -160,7 +158,7 @@ set smartcase " Ignore case when searching lowercase
 
 " Status Line *****************************************************************
 set laststatus=2
-set statusline=%{fugitive#statusline()}%=%l,%v\ %p%% 
+"set statusline=%{fugitive#statusline()}%=%l,%v\ %p%% 
 set showcmd
 set ruler " Show ruler
 
@@ -183,20 +181,13 @@ au BufRead,BufNewFile *.cu  set filetype=cpp
 au BufRead,BufNewFile *.txt  set filetype=text
 
 
-" Sessions ********************************************************************
-" Sets what is saved when you save a session
-set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
-set history=100
-
-
 " Misc ************************************************************************
 set backspace=indent,eol,start
 set number " Show line numbers
 set matchpairs+=<:>
 set vb t_vb= " Turn off the bell, this could be more annoying, but I'm not sure how
-" Swap word with next word
-nmap <silent> gw    "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<cr><c-o><c-l> *N*
-
+cnoreabbrev W w
+"
 " Mouse ***********************************************************************
 set mouse=a " Enable the mouse
 set ttymouse=xterm
@@ -211,8 +202,6 @@ set scrolloff=3
 " Omni Completion *************************************************************
 set ofu=syntaxcomplete#Complete
 
-" Insert mode bindings *******************************************************
-imap <C-tab> <c-x><c-o>
 
 " emacs style :)
 imap <c-e> <c-o>$
@@ -237,12 +226,10 @@ let NERDTreeSplitVertical=1                                   "and open as vspli
 let NERDTreeChDirMode=2                                   "change working dir when I change root
 let NERDTreeShowBookmarks=1
 
-" Marks Browser ***************************************************************
-map <leader>m :MarksBrowser<CR>
-
 " Command-T ********************************************
 map <leader>f :CommandT<CR>
 map <leader>t :CommandT<CR>
+map <leader>b :CommandTBuffer<CR>
 let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
 
 " Cool tab completion stuff
@@ -266,10 +253,6 @@ let g:tagbar_type_tex = {
 	\ }           
   
 
-" Bufexplorer \be buffers \bs split \bv vsp
-let g:bufExplorerSortBy='mru'        " Sort by most recently used. 
-map <leader>b :CommandTBuffer<CR>
-
 " Tasklist
 map <leader>T <Plug>TaskList
 
@@ -280,10 +263,6 @@ let g:vimwiki_list = [
     \ ]
 let g:vimwiki_use_mouse = 1
 let g:vimwiki_folding = 0
-
-" snipmate
-let g:snips_author='Steven Tobin'
-let g:acp_behaviorSnipmateLength=1
 
 " ultisnips
 " textmate style tab between expansion targets
@@ -303,9 +282,6 @@ let vimclojure#WantNailgun=0
 let vimclojure#SplitPos="bottom"
 let vimclojure#SplitSize = 10      
 
-" Rainbow
-nmap <leader>r :RainbowParenthesesToggle<CR>
-nmap <leader>R :call rainbow_parentheses#Clear() <CR>
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
@@ -327,11 +303,16 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 nmap <leader>i :IndentGuidesToggle<CR>
 
-" ZoomWin
-map <leader>z :ZoomWin<CR>
 
 " VimRoom
 let g:vimroom_width = 120
+
+" Powerline
+let g:Powerline_symbols = "compatible"
+
+" Syntastic
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_python_checker = "/usr/local/share/python/pyflakes"
 
 " -----------------------------------------------------------------------------  
 " |                              Functions                                     |

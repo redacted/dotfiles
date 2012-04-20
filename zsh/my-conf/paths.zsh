@@ -12,10 +12,10 @@ path=(
 /Applications/Grace.app/Contents/Resources/grace/bin
 #/Applications/Octave.app/Contents/Resources/bin/
 ~/local/sbin
-/usr/local/sbin/
+/usr/local/sbin
 /usr/local/share/python
 /usr/local/cuda/bin
-/usr/X11/bin/
+/usr/X11/bin
 /usr/bin 
 /usr/sbin
 /usr/texbin
@@ -33,7 +33,7 @@ $MANPATH
 ~/local/man/man1
 )
 
-cdpath=( $cdpath ~ ..  /) 
+#cdpath=( $cdpath ~ ..  /) 
 
 # remove duplicate entries from path,cdpath,manpath & fpath
 typeset -U path cdpath manpath fpath
@@ -45,4 +45,4 @@ export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:/Users/steven/loca
 
 export EVOLVERPATH=$HOME/Documents/Research/Evolver/fe:$HOME/Documents/Research/Evolver/doc  
 
-export PYTHONPATH=/usr/local/lib/python:$PYTHONPATH
+export PYTHONPATH=/usr/local/lib/python:~/local/python:$PYTHONPATH

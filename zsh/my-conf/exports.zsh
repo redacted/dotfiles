@@ -23,4 +23,4 @@ do
 done   
 
 ## rbenv
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"

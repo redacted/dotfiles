@@ -40,10 +40,7 @@ pman () {
     man -t "${1}" | open -f -a /Applications/Preview.app
 }
 
-# autojump
-if [ -f `brew --prefix`/etc/autojump ]; then
-  . `brew --prefix`/etc/autojump
-fi
+
 
 ## get examples for a command from cmdfu
 function cmdfu() {

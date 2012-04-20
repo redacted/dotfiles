@@ -31,3 +31,15 @@ CONF_DIR=$HOME/etc/zsh/my-conf
 for file in $(ls $CONF_DIR); do;
     source $CONF_DIR/$file;
 done;  
+
+# z
+. `brew --prefix`/etc/profile.d/z.sh
+
+# grc
+source "`brew --prefix grc`/etc/grc.bashrc"
+
+## all precmd stuff here
+precmd () {
+    _z --add "$(pwd -P)"
+    print -Pn "\e]0;%~\a"
+}     

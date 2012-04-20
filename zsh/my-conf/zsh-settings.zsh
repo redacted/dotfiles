@@ -27,11 +27,11 @@ DIRSTACKSIZE=20
 
 
 # term title
-case $TERM in
-  xterm*|rxvt)
-      precmd () { print -Pn "\e]0;%~\a" }
-    ;;
-esac
+#case $TERM in
+  #xterm*|rxvt)
+      #precmd () { print -Pn "\e]0;%~\a" }
+    #;;
+#esac
 
 
 
