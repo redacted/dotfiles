@@ -3,14 +3,10 @@
 ##
 
 path=(
-~/.rbenv/shims
 /usr/local/bin 
 /usr/local/sbin
 ~/local/bin
 ~/etc/bin
-~/.cljr/bin
-/Applications/Grace.app/Contents/Resources/grace/bin
-#/Applications/Octave.app/Contents/Resources/bin/
 ~/local/sbin
 /usr/local/sbin
 /usr/local/share/python
@@ -41,7 +37,7 @@ typeset -U path cdpath manpath fpath
 # other paths
 export NODE_PATH=$NODE_PATH:/usr/local/lib/node
 
-export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:/Users/steven/local/lib:/usr/local/cuda/lib
+export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:/Users/steven/local/lib:/usr/local/cuda/lib:/usr/local/lib
 
 export EVOLVERPATH=$HOME/Documents/Research/Evolver/fe:$HOME/Documents/Research/Evolver/doc  
 

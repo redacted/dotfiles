@@ -19,7 +19,7 @@ Bundle 'gmarik/vundle'
 
 
 " my bundles below
-Bundle 'wincent/Command-T'
+Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'sjl/gundo.vim'
 Bundle 'scrooloose/nerdcommenter'
@@ -52,7 +52,7 @@ Bundle 'vim-scripts/a.vim'
 Bundle 'vim-scripts/ack.vim'
 Bundle 'vim-scripts/AutoTag'
 Bundle 'vim-scripts/vimwiki'
-Bundle 'vim-scripts/UltiSnips'
+"Bundle 'vim-scripts/UltiSnips'
 
  " Brief help
  " :BundleList          - list configured bundles
@@ -104,6 +104,14 @@ let g:mapleader = ","
 set autoread
 autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
 
+" OS X copy-paste integration
+" Yank text to the OS X clipboard
+noremap <leader>y "*y
+noremap <leader>yy "*Y
+
+" Preserve indentation while pasting text from the OS X clipboard
+noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
+
 " Folding    ******************************************************************
 " use syntax based folding
 set foldmethod=syntax
@@ -143,8 +151,6 @@ set background=dark
 colorscheme solarized
 let g:solarized_termtrans=1
 let g:solarized_termcolors=256
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
 
 " attempt to fix scroll breaking syntax
 syn sync minlines=250
@@ -227,9 +233,8 @@ let NERDTreeChDirMode=2                                   "change working dir wh
 let NERDTreeShowBookmarks=1
 
 " Command-T ********************************************
-map <leader>f :CommandT<CR>
-map <leader>t :CommandT<CR>
-map <leader>b :CommandTBuffer<CR>
+map <leader>f :CtrlP<CR>
+map <leader>b :CtrlPBuffer<CR>
 let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
 
 " Cool tab completion stuff
