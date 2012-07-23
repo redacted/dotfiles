@@ -32,16 +32,19 @@ Bundle 'tpope/vim-markdown'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'tpope/vim-pathogen'
-Bundle 'ervandew/supertab'
+"Bundle 'ervandew/supertab'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'gregsexton/gitv'
 Bundle 'majutsushi/tagbar'
 Bundle 'mikewest/vimroom'
 Bundle 'redacted/surface-evolver-vim'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'LaTeX-Box-Team/LaTeX-Box'
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neocomplcache-snippets-complete'
+Bundle 'coderifous/textobj-word-column.vim'
 
 Bundle 'vim-scripts/TaskList.vim'
-Bundle 'vim-scripts/LaTeX-Box'
 Bundle 'vim-scripts/Rainbow-Parenthesis'
 Bundle 'vim-scripts/VimClojure'
 Bundle 'vim-scripts/IndexedSearch'
@@ -114,7 +117,7 @@ noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
 " Folding    ******************************************************************
 " use syntax based folding
-set foldmethod=syntax
+"set foldmethod=syntax
 
 " Scrollbars ******************************************************************
 set sidescrolloff=2
@@ -232,9 +235,14 @@ let NERDTreeSplitVertical=1                                   "and open as vspli
 let NERDTreeChDirMode=2                                   "change working dir when I change root
 let NERDTreeShowBookmarks=1
 
-" Command-T ********************************************
+" Ctrl-P ********************************************
 map <leader>f :CtrlP<CR>
 map <leader>b :CtrlPBuffer<CR>
+" Sane Ignore For ctrlp
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|public\/system\|data\|log\|tmp$',
+  \ 'file': '\.exe$\|\.so$\|\.dat$'
+  \ }
 let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
 
 " Cool tab completion stuff
@@ -315,6 +323,23 @@ let g:vimroom_width = 120
 " Powerline
 let g:Powerline_symbols = "compatible"
 
+" NoeComplCache
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Use camel case completion.
+let g:neocomplcache_enable_camel_case_completion = 1
+" Use underbar completion.
+let g:neocomplcache_enable_underbar_completion = 1
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 " Syntastic
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_python_checker = "/usr/local/share/python/pyflakes"

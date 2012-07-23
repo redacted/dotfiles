@@ -38,6 +38,12 @@ done;
 # grc
 source "`brew --prefix grc`/etc/grc.bashrc"
 
+# syntax highlighting
+source $HOME/etc/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# tmuxinator
+#[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+
 ## all precmd stuff here
 precmd () {
     _z --add "$(pwd -P)"
