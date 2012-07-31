@@ -50,6 +50,7 @@ Bundle 'vim-scripts/VimClojure'
 Bundle 'vim-scripts/IndexedSearch'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'vim-scripts/xoria256.vim'
+Bundle 'vim-scripts/Lucius'
 Bundle 'vim-scripts/Liquid-Carbon'
 Bundle 'vim-scripts/a.vim'
 Bundle 'vim-scripts/ack.vim'
@@ -151,7 +152,8 @@ set t_Co=256 " 256 colors
 syntax on " syntax highlighting
 
 set background=dark
-colorscheme solarized
+colorscheme lucius
+let g:lucius_style="dark_dim"
 let g:solarized_termtrans=1
 let g:solarized_termcolors=256
 

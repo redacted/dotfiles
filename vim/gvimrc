@@ -7,7 +7,7 @@
 " OS Specific *****************************************************************
 "
 set background=dark
-colorscheme solarized
+colorscheme lucius
 
 if has("gui_macvim")
   set fuoptions=maxvert,maxhorz " fullscreen options (MacVim only), resized window when changed to fullscreen
