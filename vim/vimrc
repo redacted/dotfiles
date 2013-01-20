@@ -159,8 +159,8 @@ let g:lucius_style="dark_dim"
 let g:solarized_termtrans=1
 let g:solarized_termcolors=256
 
-" attempt to fix scroll breaking syntax
-syn sync minlines=250
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/          
 
 " Searching *******************************************************************
 set hlsearch  " highlight search
@@ -274,9 +274,8 @@ let g:tagbar_type_tex = {
 map <leader>T <Plug>TaskList
 
 " Vimwiki
-let g:vimwiki_list=[{'path':'~/Dropbox/NotesWiki', 'path_html':'~/DropboxNotesWikiHTML'}]
 let g:vimwiki_list = [
-    \ {'path': '~/Dropbox/NotesWiki/notes/', 'index': 'HomePageVim', 'path_html': '~/Dropbox/NotesWiki_html', 'ext': '.markdown', 'auto_export': 0}
+    \ {'path': '~/Dropbox/NotesWiki/', 'index': 'HomePageVim', 'path_html': '~/Dropbox/NotesWiki_html', 'ext': '.txt', 'auto_export': 0}
     \ ]
 let g:vimwiki_use_mouse = 1
 let g:vimwiki_folding = 0
@@ -342,11 +341,9 @@ let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
-" SuperTab like snippets behavior.
-"imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-"" Syntastic
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_python_checker = "/usr/local/share/python/pyflakes"
+
+" Jedi-Vim
+let g:jedi#popup_on_dot = 0
 
 " -----------------------------------------------------------------------------  
 " |                              Functions                                     |
