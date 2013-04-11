@@ -29,22 +29,20 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-markdown'
-Bundle 'chrisbra/NrrwRgn'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'tpope/vim-pathogen'
 Bundle 'davidhalter/jedi-vim'
-"Bundle 'ervandew/supertab'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'gregsexton/gitv'
+"Bundle 'gregsexton/gitv'
 Bundle 'majutsushi/tagbar'
 Bundle 'mikewest/vimroom'
 Bundle 'redacted/surface-evolver-vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
-Bundle 'Shougo/neocomplcache'
 Bundle 'msanders/snipmate.vim'
-"Bundle 'Shougo/neocomplcache-snippets-complete'
 Bundle 'coderifous/textobj-word-column.vim'
+Bundle 'wikitopian/hardmode'
+Bundle 'airblade/vim-gitgutter'
 
 Bundle 'vim-scripts/TaskList.vim'
 Bundle 'vim-scripts/Rainbow-Parenthesis'
@@ -58,6 +56,7 @@ Bundle 'vim-scripts/a.vim'
 Bundle 'vim-scripts/ack.vim'
 Bundle 'vim-scripts/AutoTag'
 Bundle 'vim-scripts/vimwiki'
+
 "Bundle 'vim-scripts/UltiSnips'
 
  " Brief help
@@ -159,8 +158,7 @@ let g:lucius_style="dark_dim"
 let g:solarized_termtrans=1
 let g:solarized_termcolors=256
 
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/          
+
 
 " Searching *******************************************************************
 set hlsearch  " highlight search
@@ -348,7 +346,7 @@ let g:jedi#popup_on_dot = 0
 " -----------------------------------------------------------------------------  
 " |                              Functions                                     |
 " -----------------------------------------------------------------------------  
-                                                                                 
+
 " VIM as hex editor!
 map <leader>hon :%!xxd<CR>
 map <leader>hof :%!xxd -r<CR>       

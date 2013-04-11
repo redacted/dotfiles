@@ -9,3 +9,7 @@ setlocal foldmethod=indent
 if has("gui_running") 
     highlight SpellBad term=underline gui=undercurl guisp=Orange 
 endif 
+
+" no trailing whitespace plz
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/                
