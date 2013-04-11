@@ -5,7 +5,8 @@ ZSH=$HOME/etc/zsh/oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+ZSH_CUSTOM=$HOME/etc/zsh/zsh-custom
+ZSH_THEME="redacted-mh"
 DEFAULT_USER=$(whoami)
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -32,7 +33,7 @@ DEFAULT_USER=$(whoami)
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew cp extract osx pip python battery)
+plugins=(git brew cp extract osx pip python battery tmux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -85,10 +86,11 @@ export NODE_PATH=$NODE_PATH:/usr/local/lib/node
 
 export EVOLVERPATH=$HOME/Documents/Research/Evolver/fe:$HOME/Documents/Research/Evolver/doc  
 
-export PYTHONPATH=/usr/local/lib/python:~/local/python:$PYTHONPATH    
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages::~/local/python:$PYTHONPATH    
 
 setopt PROMPT_SUBST
 export RPS1='$(battery_pct_prompt)'
+export RPROMPT='$(battery_pct_prompt)''$(git_prompt_info)'
 
 # z
 . `brew --prefix`/etc/profile.d/z.sh
@@ -185,8 +187,21 @@ readme ()
     local files
     files=(./(#i)*(read*me|lue*m(in|)ut)*(ND))
     if (($#files))
-    then $EDITOR $files
+        then $EDITOR $files
     else
         print 'No README files.'
     fi
-}      
+}
+
+# use google translate + mplayer to say things
+say_google ()
+{
+    if [[ "${1}" =~ -[a-z]{2} ]]
+    then
+        local lang=${1#-};
+        local text="${*#$1}";
+    else local lang=${LANG%_*};
+        local text="$*";
+    fi;
+    mplayer "http://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&q=${text}" &> /dev/null ;
+}
