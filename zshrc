@@ -33,7 +33,7 @@ DEFAULT_USER=$(whoami)
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew cp extract osx pip python battery tmux)
+plugins=(git brew cp extract osx pip python battery tmux sublime)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -43,12 +43,16 @@ source $ZSH/oh-my-zsh.sh
 # Below: My configs
 ##############################################
 
-##
+## Zsh options
+setopt PROMPT_SUBST
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_ALL_DUPS
+
+
 ##  Set paths correctly
-##
 
 path=(
-/usr/local/bin 
+/usr/local/bin
 /usr/local/sbin
 ~/local/bin
 ~/etc/bin
@@ -57,24 +61,24 @@ path=(
 /usr/local/share/python
 /usr/local/cuda/bin
 /usr/X11/bin
-/usr/bin 
+/usr/bin
 /usr/sbin
 /usr/texbin
-/bin 
+/bin
 /sbin
 $PATH
-) 
-
-manpath=( 
-$MANPATH
-/usr/man 
-/usr/share/man 
-/usr/local/man 
-/usr/local/git/man
-~/local/man/man1
 )
 
-#cdpath=( $cdpath ~ ..  /) 
+manpath=(
+$MANPATH
+/usr/man
+/usr/share/man
+/usr/local/share/man
+/usr/local/git/man
+~/local/man/
+)
+
+#cdpath=( $cdpath ~ ..  /)
 
 # remove duplicate entries from path,cdpath,manpath & fpath
 typeset -U path cdpath manpath fpath
@@ -84,16 +88,19 @@ export NODE_PATH=$NODE_PATH:/usr/local/lib/node
 
 #export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:/Users/steven/local/lib:/usr/local/cuda/lib:/usr/local/lib
 
-export EVOLVERPATH=$HOME/Documents/Research/Evolver/fe:$HOME/Documents/Research/Evolver/doc  
+export EVOLVERPATH=$HOME/Documents/Research/Evolver/fe:$HOME/Documents/Research/Evolver/doc
+export BYOBU_PREFIX=$(brew --prefix)
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages::~/local/python:$PYTHONPATH
 
-export PYTHONPATH=/usr/local/lib/python2.7/site-packages::~/local/python:$PYTHONPATH    
-
-setopt PROMPT_SUBST
 export RPS1='$(battery_pct_prompt)'
 export RPROMPT='$(battery_pct_prompt)''$(git_prompt_info)'
 
 # z
 . `brew --prefix`/etc/profile.d/z.sh
+
+# tmuxinator
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+export SHELL=zsh
 
 # grc
 source "`brew --prefix`/etc/grc.bashrc"
@@ -112,7 +119,7 @@ then
     alias netstat='colourify netstat'
     alias ping='colourify ping'
     alias traceroute='colourify /usr/sbin/traceroute'
-fi                  
+fi
 
 
 ## Aliases
@@ -130,33 +137,33 @@ alias gvim='open -a MacVim '
 alias clj='rlwrap clj'
 alias foam_tunnel='ssh -f -N -L 2222:www.tcd.ie:22 netsoc'
 alias evolver='rlwrap evolver'
-alias evolver_orig='~/local/bin/evolver'            
+alias evolver_orig='~/local/bin/evolver'
 
 # sorted du
-alias du_sort="du | sort -nr | cut -f2- | xargs du -hs"           
+alias du_sort="du | sort -nr | cut -f2- | xargs du -hs"
 
 # remote commands
 alias check_cluster="ssh tchpc slurm_report.py"
 
 # octave
-alias octave_launch="exec '/Applications/Octave.app/Contents/Resources/bin/octave'"      
+alias octave_launch="exec '/Applications/Octave.app/Contents/Resources/bin/octave'"
 
 ## Exports
-export EDITOR=/usr/local/bin/vim      
+export EDITOR=/usr/local/bin/vim
 
 ## Clojure settings
-export CLASSPATH=$CLASSPATH:/usr/local/Cellar/clojure-contrib/1.2.0/clojure-contrib.jar 
+export CLASSPATH=$CLASSPATH:/usr/local/Cellar/clojure-contrib/1.2.0/clojure-contrib.jar
 export JAVA_OPTS='-Xms512m -Xmx2048m -server'
 
-for dir_ in  $HOME/local/java/jars_dir $HOME/.cljr/lib 
+for dir_ in  $HOME/local/java/jars_dir $HOME/.cljr/lib
 do
     if [ -d $dir_ ]; then
         export CLASSPATH=$CLASSPATH:$dir_/'*'
     fi
-done      
+done
 
 alias socks-tunnel="ssh -D 9999 netsoc"
-alias work-git="source ~/etc/bin/work" # need to set up a socks proxy localhost:9999 to work!       
+alias work-git="source ~/etc/bin/work" # need to set up a socks proxy localhost:9999 to work!
 
 ## Functions
 #
@@ -175,10 +182,10 @@ relaunch () {
 
 # display processes tree in less
 pst ()
-{ 
+{
     local pid
     pid=$(ps -ax | grep $1 | grep -v grep | awk '{ print $1 }')
-    pstree -p $pid  | less -S 
+    pstree -p $pid  | less -S
 }
 
 # search for various types or README file in dir and display them in $PAGER

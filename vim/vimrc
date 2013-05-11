@@ -32,7 +32,6 @@ Bundle 'tpope/vim-markdown'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'tpope/vim-pathogen'
 Bundle 'davidhalter/jedi-vim'
-Bundle 'altercation/vim-colors-solarized'
 "Bundle 'gregsexton/gitv'
 Bundle 'majutsushi/tagbar'
 Bundle 'mikewest/vimroom'
@@ -43,19 +42,23 @@ Bundle 'msanders/snipmate.vim'
 Bundle 'coderifous/textobj-word-column.vim'
 Bundle 'wikitopian/hardmode'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'terryma/vim-multiple-cursors'
 
 Bundle 'vim-scripts/TaskList.vim'
 Bundle 'vim-scripts/Rainbow-Parenthesis'
 Bundle 'vim-scripts/VimClojure'
 Bundle 'vim-scripts/IndexedSearch'
 Bundle 'vim-scripts/matchit.zip'
-Bundle 'vim-scripts/xoria256.vim'
-Bundle 'vim-scripts/Lucius'
-Bundle 'vim-scripts/Liquid-Carbon'
 Bundle 'vim-scripts/a.vim'
 Bundle 'vim-scripts/ack.vim'
 Bundle 'vim-scripts/AutoTag'
 Bundle 'vim-scripts/vimwiki'
+
+Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'vim-scripts/xoria256.vim'
+Bundle 'vim-scripts/Lucius'
+Bundle 'vim-scripts/Liquid-Carbon'
+Bundle 'altercation/vim-colors-solarized'
 
 "Bundle 'vim-scripts/UltiSnips'
 
@@ -153,7 +156,7 @@ set t_Co=256 " 256 colors
 syntax on " syntax highlighting
 
 set background=dark
-colorscheme lucius
+colorscheme Tomorrow-Night-Eighties
 let g:lucius_style="dark_dim"
 let g:solarized_termtrans=1
 let g:solarized_termcolors=256
@@ -342,6 +345,10 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 " Jedi-Vim
 let g:jedi#popup_on_dot = 0
+
+" vim gitgutter
+" get some speed back 
+let g:gitgutter_eager = 0
 
 " -----------------------------------------------------------------------------  
 " |                              Functions                                     |

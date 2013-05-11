@@ -5,9 +5,9 @@
     branch = auto
     interactive = auto
 
-[merge]
-    tool = opendiff
-    summary = true
+;[merge]
+    ;tool = opendiff
+    ;summary = true
 
 [core]
 	excludesfile = /Users/steven/etc/git-files/gitignore
@@ -42,7 +42,7 @@
     whitespace = fix
 
 [diff]
-    external = "/Users/steven/etc/bin/git_diff_wrapper"
+    ;external = "/Users/steven/etc/bin/git_diff_wrapper"
 
 [push]
 	default = upstream
