@@ -1,24 +1,24 @@
-source $HOME/etc/zsh/antigen/antigen.zsh
+ZSH_HOME=$HOME/etc/zsh
+
+source $ZSH_HOME/antigen/antigen.zsh
+source $ZSH_HOME/git.zsh
+source $ZSH_HOME/theme-and-appearance.zsh
+
 DEFAULT_USER=$(whoami)
 
-antigen use oh-my-zsh
-antigen theme $HOME/etc/zsh/redacted-mh.zsh-theme
+antigen theme $ZSH_HOME/redacted-mh.zsh-theme
 
 antigen bundles <<EOBUNDLES
-git
-brew
-extract
-osx
-pip
-python
-pip
-battery
-tmux
-sublime
+    git
+    brew
+    extract
+    battery
+    tmuxinator
+    sublime
 
-zsh-users/zsh-syntax-highlighting
-zsh-users/zsh-history-substring-search
-
+    zsh-users/zsh-syntax-highlighting
+    zsh-users/zsh-history-substring-search
+    zsh-users/zsh-completions
 EOBUNDLES
 
 antigen apply
@@ -107,16 +107,7 @@ fi
 
 
 ## Aliases
-#
-alias backup_nexus="adb backup -f Nexus4.ab -apk -shared -all -nosystem"
-alias backup_nexus_sdcard="adb pull /sdcard/"
-
 alias mmv="noglob zmv -W" # change extension
-
-# vim muscle memory
-alias :q=exit
-alias :e='vim'
-alias gvim='open -a MacVim '
 
 alias clj='rlwrap clj'
 alias foam_tunnel='ssh -f -N -L 2222:www.tcd.ie:22 netsoc'
@@ -136,15 +127,15 @@ alias octave_launch="exec '/Applications/Octave.app/Contents/Resources/bin/octav
 export EDITOR=/usr/local/bin/vim
 
 ## Clojure settings
-export CLASSPATH=$CLASSPATH:/usr/local/Cellar/clojure-contrib/1.2.0/clojure-contrib.jar
-export JAVA_OPTS='-Xms512m -Xmx2048m -server'
-
-for dir_ in  $HOME/local/java/jars_dir $HOME/.cljr/lib
-do
-    if [ -d $dir_ ]; then
-        export CLASSPATH=$CLASSPATH:$dir_/'*'
-    fi
-done
+# export CLASSPATH=$CLASSPATH:/usr/local/Cellar/clojure-contrib/1.2.0/clojure-contrib.jar
+# export JAVA_OPTS='-Xms512m -Xmx2048m -server'
+#
+# for dir_ in  $HOME/local/java/jars_dir $HOME/.cljr/lib
+# do
+#     if [ -d $dir_ ]; then
+#         export CLASSPATH=$CLASSPATH:$dir_/'*'
+#     fi
+# done
 
 alias socks-tunnel="ssh -D 9999 netsoc"
 alias work-git="source ~/etc/bin/work" # need to set up a socks proxy localhost:9999 to work!
@@ -184,6 +175,10 @@ readme ()
     fi
 }
 
+# man pages in preview
+function man-preview() {
+  man -t "$@" | open -f -a Preview
+}
 # use google translate + mplayer to say things
 say_google ()
 {
