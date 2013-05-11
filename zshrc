@@ -1,53 +1,37 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/etc/zsh/oh-my-zsh
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_CUSTOM=$HOME/etc/zsh/zsh-custom
-ZSH_THEME="redacted-mh"
+source $HOME/etc/zsh/antigen/antigen.zsh
 DEFAULT_USER=$(whoami)
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
+antigen use oh-my-zsh
+antigen theme $HOME/etc/zsh/redacted-mh.zsh-theme
 
-# Comment this out to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+antigen bundles <<EOBUNDLES
+git
+brew
+extract
+osx
+pip
+python
+pip
+battery
+tmux
+sublime
 
-# Uncomment to change how many often would you like to wait before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-history-substring-search
 
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
+EOBUNDLES
 
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+antigen apply
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew cp extract osx pip python battery tmux sublime)
-
-source $ZSH/oh-my-zsh.sh
-
-
-##############################################
-# Above: oh-my-zsh
-# Below: My configs
 ##############################################
 
 ## Zsh options
 setopt PROMPT_SUBST
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_ALL_DUPS
+COMPLETION_WAITING_DOTS=true
 
+autoload -U zmv
 
 ##  Set paths correctly
 
@@ -89,11 +73,11 @@ export NODE_PATH=$NODE_PATH:/usr/local/lib/node
 #export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:/Users/steven/local/lib:/usr/local/cuda/lib:/usr/local/lib
 
 export EVOLVERPATH=$HOME/Documents/Research/Evolver/fe:$HOME/Documents/Research/Evolver/doc
-export BYOBU_PREFIX=$(brew --prefix)
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages::~/local/python:$PYTHONPATH
 
 export RPS1='$(battery_pct_prompt)'
 export RPROMPT='$(battery_pct_prompt)''$(git_prompt_info)'
+
 
 # z
 . `brew --prefix`/etc/profile.d/z.sh
