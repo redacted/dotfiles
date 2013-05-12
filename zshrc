@@ -1,8 +1,8 @@
 ZSH_HOME=$HOME/etc/zsh
 
 source $ZSH_HOME/antigen/antigen.zsh
-source $ZSH_HOME/git.zsh
-source $ZSH_HOME/theme-and-appearance.zsh
+
+antigen use oh-my-zsh
 
 DEFAULT_USER=$(whoami)
 
@@ -14,7 +14,6 @@ antigen bundles <<EOBUNDLES
     extract
     battery
     tmuxinator
-    sublime
 
     zsh-users/zsh-syntax-highlighting
     zsh-users/zsh-history-substring-search
