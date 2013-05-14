@@ -7,16 +7,24 @@
 		"Dotfiles Syntax Highlighting",
 		"Git",
 		"GitGutter",
+		"gnuplot-tmbundle",
 		"LaTeXTools",
+		"Navigation History",
 		"Origami",
 		"Package Control",
 		"SideBarEnhancements",
+		"Solarized Color Scheme",
 		"SublimeJEDI",
 		"SublimeLinter",
 		"SublimeTODO",
 		"Theme - Aqua",
 		"Theme - Soda",
+		"Todo.txt Syntax",
 		"Tomorrow Color Schemes",
 		"VintageEx"
+	],
+	"repositories":
+	[
+		"https://github.com/mattfoster/gnuplot-tmbundle"
 	]
 }
