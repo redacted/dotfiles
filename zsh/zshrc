@@ -1,0 +1,146 @@
+ZSH_HOME=$HOME/etc/zsh
+
+DEFAULT_USER=$(whoami)
+
+# paths
+source $ZSH_HOME/paths.zsh
+
+# functions
+source $ZSH_HOME/functions.zsh
+
+## useful remnants of OMZ
+# git, theming, completions
+# TODO: reduce this file
+source $ZSH_HOME/OMZ_remnants.zsh
+
+
+# my theme :)
+source $ZSH_HOME/redacted-mh.zsh-theme
+
+# aliases
+source $ZSH_HOME/aliases.zsh
+
+
+# Z
+source `brew --prefix`/etc/profile.d/z.sh
+
+# tmuxinator
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+
+# grc
+source "`brew --prefix`/etc/grc.bashrc"
+
+## Zsh options
+setopt auto_name_dirs
+setopt pushd_ignore_dups
+setopt prompt_subst
+setopt no_beep
+setopt multios
+setopt cdablevarS
+setopt transient_rprompt
+setopt extended_glob
+
+autoload colors; colors;
+autoload -U zmv
+autoload -U compinit
+compinit -i
+
+export SHELL=zsh
+export RPS1='$(battery_pct_prompt)'
+export RPROMPT='$(battery_pct_prompt)''$(git_prompt_info)'
+export EDITOR=/usr/local/bin/vim
+export PAGER="less"
+export LESS="-R"
+export LC_CTYPE=$LANG
+
+## substring search
+for keycode in '[' '0'; do
+    bindkey "^[${keycode}A" history-substring-search-up
+    bindkey "^[${keycode}B" history-substring-search-down
+done
+
+unset keycode
+
+# bind P and N for EMACS mode
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+
+# bind k and j for VI mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+
+
+
+## Command history configuration
+if [ -z $HISTFILE ]; then
+    HISTFILE=$HOME/.zsh_history
+fi
+HISTSIZE=10000
+SAVEHIST=10000
+
+setopt append_history
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups # ignore duplication command history list
+setopt hist_ignore_space
+setopt hist_verify
+setopt inc_append_history
+setopt share_history # share command history data
+
+## Autocorrections
+setopt correct_all
+alias man='nocorrect man'
+alias mv='nocorrect mv'
+alias mkdir='nocorrect mkdir'
+alias sudo='nocorrect sudo'
+
+## Edit command line
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '\C-x\C-e' edit-command-line
+
+## smart urls
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic
+
+## file rename magick
+bindkey "^[m" copy-prev-shell-word
+
+## jobs
+setopt long_list_jobs
+
+## useful keybindings
+bindkey -e
+bindkey '\ew' kill-region
+bindkey -s '\el' "ls\n"
+bindkey '^r' history-incremental-search-backward
+bindkey "^[[5~" up-line-or-history
+bindkey "^[[6~" down-line-or-history
+
+# make search up and down work, so partially type and hit up/down to find relevant stuff
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
+
+bindkey "^[[H" beginning-of-line
+bindkey "^[[1~" beginning-of-line
+bindkey "^[OH" beginning-of-line
+bindkey "^[[F"  end-of-line
+bindkey "^[[4~" end-of-line
+bindkey "^[OF" end-of-line
+bindkey ' ' magic-space    # also do history expansion on space
+
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
+bindkey '^[[Z' reverse-menu-complete
+
+# Make the delete key (or Fn + Delete on the Mac) work instead of outputting a ~
+bindkey '^?' backward-delete-char
+bindkey "^[[3~" delete-char
+bindkey "^[3;5~" delete-char
+bindkey "\e[3~" delete-char
+
+
+# syntax highlighting (must be at the end!)
+source $ZSH_HOME/syntax-highlighting/zsh-syntax-highlighting.zsh
