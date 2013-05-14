@@ -53,24 +53,6 @@ export PAGER="less"
 export LESS="-R"
 export LC_CTYPE=$LANG
 
-## substring search
-for keycode in '[' '0'; do
-    bindkey "^[${keycode}A" history-substring-search-up
-    bindkey "^[${keycode}B" history-substring-search-down
-done
-
-unset keycode
-
-# bind P and N for EMACS mode
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
-
-# bind k and j for VI mode
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-
-
-
 
 ## Command history configuration
 if [ -z $HISTFILE ]; then
@@ -144,3 +126,22 @@ bindkey "\e[3~" delete-char
 
 # syntax highlighting (must be at the end!)
 source $ZSH_HOME/syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# search (must be after syntax :-)
+source $ZSH_HOME/history-substring-search/zsh-history-substring-search.zsh
+
+## substring search config
+for keycode in '[' '0'; do
+    bindkey "^[${keycode}A" history-substring-search-up
+    bindkey "^[${keycode}B" history-substring-search-down
+done
+
+unset keycode
+
+# bind P and N for EMACS mode
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+
+# bind k and j for VI mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
