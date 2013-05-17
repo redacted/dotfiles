@@ -40,3 +40,14 @@ alias sl=ls # often screw this up
 # Will cd into the top of the current repository
 # or submodule.
 alias grt='cd $(git rev-parse --show-toplevel || echo ".")'
+
+# fasd
+# jump to recently used items
+alias a='fasd -a' # any
+alias s='fasd -si' # show / search / select
+alias d='fasd -d' # directory
+alias f='fasd -f' # file
+alias z='fasd_cd -d' # cd, same functionality as j in autojump
+alias zz='fasd_cd -d -i' # interactive directory jump
+alias fst='fasd -a -e "subl -n"'
+alias o='a-e open'

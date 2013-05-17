@@ -20,9 +20,19 @@ source $ZSH_HOME/redacted-mh.zsh-theme
 # aliases
 source $ZSH_HOME/aliases.zsh
 
+# fasd
+# only init if installed.
+if [ $commands[fasd] ]; then # check if fasd is installed
+  fasd_cache="$HOME/.fasd-init-cache"
+  if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+    fasd --init auto >| "$fasd_cache"
+  fi
+  source "$fasd_cache"
+  unset fasd_cache
+  alias v='f -e vim'
+  alias o='a -e open'
+fi
 
-# Z
-source `brew --prefix`/etc/profile.d/z.sh
 
 # tmuxinator
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
