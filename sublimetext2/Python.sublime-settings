@@ -1,4 +1,6 @@
 {
 	"translate_tabs_to_spaces": true,
+    "ensure_newline_at_eof_on_save": true,
+    "rulers": [ 72, 79 ],
     "auto_complete_triggers": [{"selector": "source.python", "characters": "."}]
 }

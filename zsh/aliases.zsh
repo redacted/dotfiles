@@ -49,5 +49,5 @@ alias d='fasd -d' # directory
 alias f='fasd -f' # file
 alias z='fasd_cd -d' # cd, same functionality as j in autojump
 alias zz='fasd_cd -d -i' # interactive directory jump
-alias fst='fasd -a -e "subl -n"'
+alias fst="fasd -a -e 'subl -n'"
 alias o='a-e open'

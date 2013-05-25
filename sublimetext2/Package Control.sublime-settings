@@ -1,6 +1,7 @@
 {
 	"installed_packages":
 	[
+		"Alignment",
 		"All Autocomplete",
 		"AutoFileName",
 		"BracketHighlighter",
@@ -8,14 +9,17 @@
 		"Git",
 		"GitGutter",
 		"gnuplot-tmbundle",
+		"Insert Nums",
 		"LaTeXTools",
 		"Navigation History",
 		"Origami",
 		"Package Control",
+		"SelectUntil",
 		"SideBarEnhancements",
 		"Solarized Color Scheme",
 		"SublimeJEDI",
 		"SublimeLinter",
+		"SublimeREPL",
 		"SublimeTODO",
 		"Theme - Aqua",
 		"Theme - Soda",
