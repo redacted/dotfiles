@@ -1,3 +1,5 @@
+--python-kinds=-i
+
 --langmap=Lisp:+.clj
 
 --langmap=C:+.cu

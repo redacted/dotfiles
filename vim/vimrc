@@ -15,69 +15,66 @@ set rtp+=~/etc/vim/bundle/vundle/
 call vundle#rc()
 
 " required! 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 
 " my bundles below
-Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'sjl/gundo.vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-markdown'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'tpope/vim-pathogen'
-Bundle 'davidhalter/jedi-vim'
-"Bundle 'gregsexton/gitv'
-Bundle 'majutsushi/tagbar'
-Bundle 'mikewest/vimroom'
-Bundle 'redacted/surface-evolver-vim'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'LaTeX-Box-Team/LaTeX-Box'
-Bundle 'msanders/snipmate.vim'
-Bundle 'coderifous/textobj-word-column.vim'
-Bundle 'wikitopian/hardmode'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'terryma/vim-multiple-cursors'
+Plugin 'kien/ctrlp.vim'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'sjl/gundo.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-markdown'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'majutsushi/tagbar'
+Plugin 'redacted/surface-evolver-vim'
+Plugin 'bling/vim-airline'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'msanders/snipmate.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'Valloric/YouCompleteMe'
+"Plugin 'davidhalter/jedi-vim'
 
-Bundle 'vim-scripts/TaskList.vim'
-Bundle 'vim-scripts/Rainbow-Parenthesis'
-Bundle 'vim-scripts/VimClojure'
-Bundle 'vim-scripts/IndexedSearch'
-Bundle 'vim-scripts/matchit.zip'
-Bundle 'vim-scripts/a.vim'
-Bundle 'vim-scripts/ack.vim'
-Bundle 'vim-scripts/AutoTag'
-Bundle 'vim-scripts/vimwiki'
+Plugin 'vim-scripts/TaskList.vim'
+Plugin 'vim-scripts/VimClojure'
+Plugin 'vim-scripts/IndexedSearch'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'vim-scripts/a.vim'
+Plugin 'vim-scripts/ack.vim'
+Plugin 'vim-scripts/AutoTag'
 
-Bundle 'chriskempson/vim-tomorrow-theme'
-Bundle 'vim-scripts/xoria256.vim'
-Bundle 'vim-scripts/Lucius'
-Bundle 'vim-scripts/Liquid-Carbon'
-Bundle 'altercation/vim-colors-solarized'
+Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'vim-scripts/xoria256.vim'
+Plugin 'vim-scripts/Lucius'
+Plugin 'vim-scripts/Liquid-Carbon'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'sjl/badwolf' 
 
-"Bundle 'vim-scripts/UltiSnips'
+"Plugin 'vim-scripts/UltiSnips'
 
  " Brief help
- " :BundleList          - list configured bundles
- " :BundleInstall(!)    - install(update) bundles
- " :BundleSearch(!) foo - search(or refresh cache first) for foo
- " :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+ " :PluginList          - list configured bundles
+ " :PluginInstall(!)    - install(update) bundles
+ " :PluginSearch(!) foo - search(or refresh cache first) for foo
+ " :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles
  "
  " see :h vundle for more details or wiki for FAQ
- " NOTE: comments after Bundle command are not allowed..
+ " NOTE: comments after Plugin command are not allowed..
  "
  "
  "" original repos on github
- "Bundle 'tpope/vim-fugitive'
+ "Plugin 'tpope/vim-fugitive'
  " vim-scripts repos
- "Bundle 'L9'
+ "Plugin 'L9'
  " non github repos
- "Bundle 'git://git.wincent.com/command-t.git'
+ "Plugin 'git://git.wincent.com/command-t.git'
 filetype plugin indent on
 
 "" vundle end  ****************************************************************
@@ -125,8 +122,8 @@ noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 "set foldmethod=syntax
 
 " Scrollbars ******************************************************************
-set sidescrolloff=2
-set numberwidth=4
+"set sidescrolloff=2
+"set numberwidth=4
 
 " Windows *********************************************************************
 set equalalways " Multiple windows when created are equal in size
@@ -156,10 +153,13 @@ set t_Co=256 " 256 colors
 syntax on " syntax highlighting
 
 set background=dark
-colorscheme Tomorrow-Night-Eighties
+"colorscheme Tomorrow-Night-Eighties
+colorscheme badwolf
 let g:lucius_style="dark_dim"
 let g:solarized_termtrans=1
 let g:solarized_termcolors=256
+let g:badwolf_darkgutter=1
+let g:badwolf_tabline=0
 
 
 
@@ -211,7 +211,7 @@ set mousemodel=popup  " right click menu
 
 " Cursor Movement *************************************************************
 "imap jj <ESC>
-set scrolloff=3
+"set scrolloff=3
 
 " Omni Completion *************************************************************
 set ofu=syntaxcomplete#Complete
@@ -259,7 +259,7 @@ set tags=tags;/ " searches directory upwards for tags file!
 let g:tagbar_ctags_bin='/usr/local/bin/ctags'
 map <leader>t :TagbarToggle<CR>
 let g:tagbar_type_tex = {
-	    \ 'ctagstype' : 'latex',
+        \ 'ctagstype' : 'latex',
 	    \ 'kinds'     : [
 	        \ 's:sections',
 	        \ 'g:graphics',
@@ -268,7 +268,7 @@ let g:tagbar_type_tex = {
 	        \ 'p:pagerefs:1'
 	    \ ],
 	    \ 'sort'    : 0
-	\ }           
+	\ }
   
 
 " Tasklist
@@ -325,23 +325,30 @@ nmap <leader>i :IndentGuidesToggle<CR>
 let g:vimroom_width = 120
 
 " Powerline
-let g:Powerline_symbols = "compatible"
+if !exists('g:airline_symbols')
+   let g:airline_symbols = {}
+endif
 
-" NoeComplCache
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Use camel case completion.
-let g:neocomplcache_enable_camel_case_completion = 1
-" Use underbar completion.
-let g:neocomplcache_enable_underbar_completion = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
 
+
+" Rainbow always on
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 " Jedi-Vim
 let g:jedi#popup_on_dot = 0

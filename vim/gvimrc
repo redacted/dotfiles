@@ -7,12 +7,13 @@
 " OS Specific *****************************************************************
 "
 set background=dark
-colorscheme Tomorrow-Night-Eighties
+"colorscheme solarized
+"colorscheme badwolf
 
 if has("gui_macvim")
   set fuoptions=maxvert,maxhorz " fullscreen options (MacVim only), resized window when changed to fullscreen
-  set guifont=Menlo:h12.00
-  "set guifont=Pragmata:h13.00
+  "set guifont=Menlo:h12.00
+  set guifont=Pragmata:h13.00
   set guioptions-=T  " remove toolbar
 
 end

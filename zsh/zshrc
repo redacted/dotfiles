@@ -74,7 +74,8 @@ fi
 
 ## Zsh options
 setopt auto_name_dirs
-setopt pushd_ignore_dups
+setopt autopushd
+setopt pushdignoredups
 setopt prompt_subst
 setopt no_beep
 setopt multios
