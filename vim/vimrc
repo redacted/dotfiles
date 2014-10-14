@@ -38,8 +38,8 @@ Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'msanders/snipmate.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'Valloric/YouCompleteMe'
-"Plugin 'davidhalter/jedi-vim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'Shougo/neocomplete.vim'
 
 Plugin 'vim-scripts/TaskList.vim'
 Plugin 'vim-scripts/VimClojure'
@@ -56,25 +56,8 @@ Plugin 'vim-scripts/Liquid-Carbon'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'sjl/badwolf' 
+Plugin 'guns/jellyx.vim'
 
-"Plugin 'vim-scripts/UltiSnips'
-
- " Brief help
- " :PluginList          - list configured bundles
- " :PluginInstall(!)    - install(update) bundles
- " :PluginSearch(!) foo - search(or refresh cache first) for foo
- " :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles
- "
- " see :h vundle for more details or wiki for FAQ
- " NOTE: comments after Plugin command are not allowed..
- "
- "
- "" original repos on github
- "Plugin 'tpope/vim-fugitive'
- " vim-scripts repos
- "Plugin 'L9'
- " non github repos
- "Plugin 'git://git.wincent.com/command-t.git'
 filetype plugin indent on
 
 "" vundle end  ****************************************************************
@@ -119,7 +102,7 @@ noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
 " Folding    ******************************************************************
 " use syntax based folding
-"set foldmethod=syntax
+set foldmethod=syntax
 
 " Scrollbars ******************************************************************
 "set sidescrolloff=2
@@ -153,14 +136,7 @@ set t_Co=256 " 256 colors
 syntax on " syntax highlighting
 
 set background=dark
-"colorscheme Tomorrow-Night-Eighties
-colorscheme badwolf
-let g:lucius_style="dark_dim"
-let g:solarized_termtrans=1
-let g:solarized_termcolors=256
-let g:badwolf_darkgutter=1
-let g:badwolf_tabline=0
-
+colorscheme jellyx
 
 
 " Searching *******************************************************************
@@ -168,7 +144,6 @@ set hlsearch  " highlight search
 set incsearch  " incremental search search as you type
 set ignorecase " Ignore case when searching 
 set smartcase " Ignore case when searching lowercase
-"set gdefault " global in line by default
 
 " Status Line *****************************************************************
 set laststatus=2
@@ -209,13 +184,8 @@ behave xterm
 set selectmode=mouse
 set mousemodel=popup  " right click menu
 
-" Cursor Movement *************************************************************
-"imap jj <ESC>
-"set scrolloff=3
-
 " Omni Completion *************************************************************
 set ofu=syntaxcomplete#Complete
-
 
 " emacs style :)
 imap <c-e> <c-o>$
@@ -281,12 +251,6 @@ let g:vimwiki_list = [
 let g:vimwiki_use_mouse = 1
 let g:vimwiki_folding = 0
 
-" ultisnips
-" textmate style tab between expansion targets
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
 " automatically open and close the popup menu / preview window
 set completeopt=menuone,menu,longest,preview
 
@@ -300,9 +264,6 @@ let vimclojure#SplitPos="bottom"
 let vimclojure#SplitSize = 10      
 
 
-" SuperTab
-let g:SuperTabDefaultCompletionType = "context"
-
 " latexbox
 let g:LatexBox_viewer = "open"
 "yankring
@@ -311,14 +272,55 @@ let g:yankring_history_file = "temp/yankring_history"
 " GUndo
 nnoremap <leader>u :GundoToggle<CR>
 
-" Colorschemes
-"let g:molokai_original=1
-
 " Indent guides
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 nmap <leader>i :IndentGuidesToggle<CR>
+
+" Neocomplete
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplete#close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
 
 
 " VimRoom
