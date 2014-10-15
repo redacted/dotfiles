@@ -71,6 +71,8 @@ set modelines=0
 set hidden " switch between buffers with unsaved changes
 set shortmess+=I "no startup message
 set encoding=utf-8
+set ttimeout
+set ttimeoutlen=100 
 set ttyfast
 
 " Tabs ************************************************************************
@@ -136,6 +138,7 @@ set t_Co=256 " 256 colors
 syntax on " syntax highlighting
 
 set background=dark
+let g:jellyx_show_whitespace = 1
 colorscheme jellyx
 
 
