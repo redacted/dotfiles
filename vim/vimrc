@@ -23,12 +23,11 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'sjl/gundo.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-markdown'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'majutsushi/tagbar'
@@ -40,6 +39,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimfiler.vim'
 
 Plugin 'vim-scripts/TaskList.vim'
 Plugin 'vim-scripts/VimClojure'
@@ -200,18 +201,10 @@ imap <c-a> <c-o>^
 " -----------------------------------------------------------------------------  
 
 " NERDTree ********************************************************************
-:noremap <leader>n :NERDTreeToggle<CR>
+:noremap <leader>n :VimFiler<CR>
 
 " Use instead of Netrw when doing an edit /foobar
-let NERDTreeHijackNetrw=1
-
-" Single click for everything
-let NERDTreeMouseMode=1
-
-let NERDTreeIgnore=['\.pyc$','\.swp$', '\.tiff']                 "ignore compiled python files
-let NERDTreeSplitVertical=1                                   "and open as vsplit
-let NERDTreeChDirMode=2                                   "change working dir when I change root
-let NERDTreeShowBookmarks=1
+let g:vimfiler_as_default_explorer=1
 
 " Ctrl-P ********************************************
 map <leader>f :CtrlP<CR>

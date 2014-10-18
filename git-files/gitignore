@@ -4,6 +4,7 @@ profile
 tags
 
 
+.netrwhist
 *.swp
 *~.nib
 *.pbxproj -crlf -diff -merge
