@@ -222,7 +222,7 @@ set wildmode=list:longest,full
 
 " Tags
 set tags=tags;/ " searches directory upwards for tags file!
-let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+" let g:tagbar_ctags_bin='/usr/local/bin/ctags'
 map <leader>t :TagbarToggle<CR>
 let g:tagbar_type_tex = {
         \ 'ctagstype' : 'latex',
