@@ -18,6 +18,7 @@ call vundle#rc()
 Plugin 'gmarik/vundle'
 
 
+
 " my bundles below
 Plugin 'kien/ctrlp.vim'
 Plugin 'kien/rainbow_parentheses.vim'
@@ -56,7 +57,7 @@ Plugin 'vim-scripts/Lucius'
 Plugin 'vim-scripts/Liquid-Carbon'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'w0ng/vim-hybrid'
-Plugin 'sjl/badwolf' 
+Plugin 'sjl/badwolf'
 Plugin 'guns/jellyx.vim'
 
 filetype plugin indent on
@@ -109,6 +110,13 @@ set foldmethod=syntax
 
 " Scrollbars ******************************************************************
 "set sidescrolloff=2
+if !&scrolloff
+  set scrolloff=1
+endif
+if !&sidescrolloff
+  set sidescrolloff=5
+endif
+set display+=lastline
 "set numberwidth=4
 
 " Windows *********************************************************************
@@ -277,11 +285,14 @@ nmap <leader>i :IndentGuidesToggle<CR>
 " Neocomplete
 " Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
+let g:acp_enableAtStartup = 0
 " Use smartcase.
 let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+" smaller pop up
+let g:neocomplete#max_list = 10
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
