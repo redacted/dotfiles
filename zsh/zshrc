@@ -191,7 +191,8 @@ alias lsa='ls -lah'
 #alias l='ls -la'
 alias ll='ls -l'
 alias la='ls -lA'
-alias sl=ls # often screw this up
+# websummit enforces proper sl usage
+# alias sl=ls # often screw this up
 
 # Will cd into the top of the current repository
 # or submodule.
