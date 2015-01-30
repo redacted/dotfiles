@@ -89,7 +89,7 @@ autoload -U compinit
 compinit -i
 
 export SHELL=zsh
-export EDITOR=/usr/local/bin/vim
+export EDITOR=vim
 export PAGER="less"
 export LESS="-R"
 export LC_CTYPE=$LANG
