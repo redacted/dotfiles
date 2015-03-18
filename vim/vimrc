@@ -1,20 +1,20 @@
-" -----------------------------------------------------------------------------  
+" -----------------------------------------------------------------------------
 " |                            VIM Settings                                   |
 " |                   (see gvimrc for gui vim settings)                       |
-" -----------------------------------------------------------------------------  
+" -----------------------------------------------------------------------------
 
 set nocompatible
 filetype off
 
-" -----------------------------------------------------------------------------  
+" -----------------------------------------------------------------------------
 " |                         Vundle Config                                     |
-" -----------------------------------------------------------------------------  
+" -----------------------------------------------------------------------------
 
 " git clone http://github.com/gmarik/vundle.git ~/etc/vim/bundle/vundle
 set rtp+=~/etc/vim/bundle/vundle/
 call vundle#rc()
 
-" required! 
+" required!
 Plugin 'gmarik/vundle'
 
 
@@ -33,6 +33,7 @@ Plugin 'tpope/vim-markdown'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'majutsushi/tagbar'
 Plugin 'redacted/surface-evolver-vim'
+Plugin 'neo4j-contrib/cypher-vim-syntax'
 Plugin 'bling/vim-airline'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'msanders/snipmate.vim'
@@ -75,7 +76,7 @@ set hidden " switch between buffers with unsaved changes
 set shortmess+=I "no startup message
 set encoding=utf-8
 set ttimeout
-set ttimeoutlen=100 
+set ttimeoutlen=100
 set ttyfast
 
 " Tabs ************************************************************************
@@ -155,12 +156,12 @@ colorscheme spacegray
 " Searching *******************************************************************
 set hlsearch  " highlight search
 set incsearch  " incremental search search as you type
-set ignorecase " Ignore case when searching 
+set ignorecase " Ignore case when searching
 set smartcase " Ignore case when searching lowercase
 
 " Status Line *****************************************************************
 set laststatus=2
-"set statusline=%{fugitive#statusline()}%=%l,%v\ %p%% 
+"set statusline=%{fugitive#statusline()}%=%l,%v\ %p%%
 set showcmd
 set ruler " Show ruler
 
@@ -205,9 +206,9 @@ imap <c-e> <c-o>$
 imap <c-a> <c-o>^
 
 
-" -----------------------------------------------------------------------------  
+" -----------------------------------------------------------------------------
 " |                              Plugins                                     |
-" -----------------------------------------------------------------------------  
+" -----------------------------------------------------------------------------
 
 " NERDTree ********************************************************************
 :noremap <leader>n :VimFiler<CR>
@@ -244,7 +245,7 @@ let g:tagbar_type_tex = {
 	    \ ],
 	    \ 'sort'    : 0
 	\ }
-  
+
 
 " Tasklist
 map <leader>T <Plug>TaskList
@@ -266,13 +267,13 @@ let g:vimclojure#ParenRainbow=1           " Rainbow parentheses'!
 let vimclojure#NailgunClient="/Users/steven/local/bin/ng"
 let vimclojure#WantNailgun=0
 let vimclojure#SplitPos="bottom"
-let vimclojure#SplitSize = 10      
+let vimclojure#SplitSize = 10
 
 
 " latexbox
 let g:LatexBox_viewer = "open"
 "yankring
-let g:yankring_history_file = "temp/yankring_history"  
+let g:yankring_history_file = "temp/yankring_history"
 
 " GUndo
 nnoremap <leader>u :GundoToggle<CR>
@@ -285,6 +286,8 @@ nmap <leader>i :IndentGuidesToggle<CR>
 
 " Neocomplete
 " Use neocomplete.
+let g:neocomplete#enable_cursor_hold_i = 1
+let g:neocomplete#cursor_hold_i_time = 500
 let g:neocomplete#enable_at_startup = 1
 let g:acp_enableAtStartup = 0
 " Use smartcase.
@@ -362,20 +365,28 @@ au Syntax * RainbowParenthesesLoadBraces
 let g:jedi#popup_on_dot = 0
 
 " vim gitgutter
-" get some speed back 
+" get some speed back
 let g:gitgutter_eager = 0
 
-" -----------------------------------------------------------------------------  
+" -----------------------------------------------------------------------------
 " |                              Functions                                     |
-" -----------------------------------------------------------------------------  
+" -----------------------------------------------------------------------------
 
 " VIM as hex editor!
 map <leader>hon :%!xxd<CR>
-map <leader>hof :%!xxd -r<CR>       
+map <leader>hof :%!xxd -r<CR>
 
 "switch to directory of current file
-command! CD lcd %:p:h            
+command! CD lcd %:p:h
 
 " Sudo to write
 cmap w!! w !sudo tee % >/dev/null
+
+func! DeleteTrailingWS()
+exe "normal mz"
+    %s/\s\+$//ge
+      exe "normal `z"
+endfunc
+
+autocmd BufWrite *.py :call DeleteTrailingWS()
 

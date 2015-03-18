@@ -49,7 +49,7 @@ endfu
 if has("gui_macvim")
   set fuoptions=maxvert,maxhorz " fullscreen options (MacVim only), resized window when changed to fullscreen
   "set guifont=Menlo:h12.00
-  set guifont=Pragmata:h16.00
+  set guifont=PragmataPro:h16.00
   set guioptions-=T  " remove toolbar
   " Make the 'Toggle Full Screen Mode' menu item call ToggleFu()
   aunmenu Window.Toggle\ Full\ Screen\ Mode
