@@ -456,9 +456,9 @@ function preexec() {
 # prompt
 PROMPT='[%{$fg[red]%}%30<...<%~%<<%{$reset_color%}]%(!.#.$) '
 if hash ioreg 2>/dev/null; then
-    RPROMPT='$(git_prompt_info)''$(battery_pct_prompt)'
+    RPROMPT='$(git_prompt_info)''%M''$(battery_pct_prompt)'
 else
-    RPROMPT='$(git_prompt_info)'
+    RPROMPT='$(git_prompt_info)''%M'
 fi
 
 # git theming
