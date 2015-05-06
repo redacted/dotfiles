@@ -53,6 +53,8 @@ export PYTHONPATH=$HOME/local/python:$HOME/anaconda/bin:$PYTHONPATH
 # TODO: reduce this file
 source $ZSH_HOME/OMZ_remnants.zsh
 
+# AWS
+[[ -s /usr/local/share/zsh/site-functions/_aws ]] &&   source /usr/local/share/zsh/site-functions/_aws
 
 
 # fasd
@@ -178,7 +180,7 @@ bindkey "\e[3~" delete-char
 
 alias mmv="noglob zmv -W" # change extension
 
-alias clj='rlwrap clj'
+alias clj='lein exec'
 alias evolver='rlwrap evolver'
 alias evolver_orig='~/local/bin/evolver'
 
@@ -455,11 +457,16 @@ function preexec() {
 
 # prompt
 PROMPT='[%{$fg[red]%}%30<...<%~%<<%{$reset_color%}]%(!.#.$) '
-if hash ioreg 2>/dev/null; then
-    RPROMPT='$(git_prompt_info)''%M''$(battery_pct_prompt)'
+if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
+    if hash ioreg 2>/dev/null; then
+        RPROMPT='$(git_prompt_info)''%M'' $(battery_pct_prompt)'
+    else
+        RPROMPT='$(git_prompt_info)''%M'
+    fi
 else
-    RPROMPT='$(git_prompt_info)''%M'
+   RPROMPT='$(git_prompt_info)'
 fi
+
 
 # git theming
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[gray]%}(%{$fg_no_bold[yellow]%}%B"

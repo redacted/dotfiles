@@ -1,0 +1,3 @@
+[submodule "tmux_heat"]
+	path = tmux_heat
+	url = git@github.com:gpakosz/.tmux.git

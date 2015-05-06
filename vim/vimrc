@@ -10,16 +10,12 @@ filetype off
 " |                         Vundle Config                                     |
 " -----------------------------------------------------------------------------
 
-" git clone http://github.com/gmarik/vundle.git ~/etc/vim/bundle/vundle
-set rtp+=~/etc/vim/bundle/vundle/
-call vundle#rc()
+" git clone http://github.com/gmarik/Vundle.vim.git ~/etc/vim/bundle/Vundle.vim
+set rtp+=~/etc/vim/bundle/Vundle.vim/
+call vundle#begin()
 
 " required!
-Plugin 'gmarik/vundle'
-
-
-
-" my bundles below
+Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-fugitive'
@@ -30,6 +26,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-classpath'
+
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'majutsushi/tagbar'
 Plugin 'redacted/surface-evolver-vim'
@@ -40,18 +39,16 @@ Plugin 'msanders/snipmate.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'davidhalter/jedi-vim'
-Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimfiler.vim'
-
+Plugin 'guns/vim-sexp'
+Plugin 'guns/vim-clojure-static'
 Plugin 'vim-scripts/TaskList.vim'
-Plugin 'vim-scripts/VimClojure'
 Plugin 'vim-scripts/IndexedSearch'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'vim-scripts/a.vim'
 Plugin 'vim-scripts/ack.vim'
 Plugin 'vim-scripts/AutoTag'
-
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'vim-scripts/xoria256.vim'
 Plugin 'vim-scripts/Lucius'
@@ -62,6 +59,7 @@ Plugin 'sjl/badwolf'
 Plugin 'guns/jellyx.vim'
 Plugin 'ajh17/Spacegray.vim'
 
+call vundle#end()
 filetype plugin indent on
 
 "" vundle end  ****************************************************************
@@ -75,9 +73,9 @@ set modelines=0
 set hidden " switch between buffers with unsaved changes
 set shortmess+=I "no startup message
 set encoding=utf-8
-set ttimeout
-set ttimeoutlen=100
-set ttyfast
+" set ttimeout
+" set ttimeoutlen=100
+" set ttyfast
 
 " Tabs ************************************************************************
 " Use 4 spaces
@@ -198,8 +196,6 @@ behave xterm
 set selectmode=mouse
 set mousemodel=popup  " right click menu
 
-" Omni Completion *************************************************************
-set ofu=syntaxcomplete#Complete
 
 " emacs style :)
 imap <c-e> <c-o>$
@@ -227,8 +223,8 @@ let g:ctrlp_custom_ignore = {
 let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
 
 " Cool tab completion stuff
-set wildmenu
-set wildmode=list:longest,full
+" set wildmenu
+" set wildmode=list:longest,full
 
 " Tags
 set tags=tags;/ " searches directory upwards for tags file!
@@ -284,52 +280,12 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 nmap <leader>i :IndentGuidesToggle<CR>
 
-" Neocomplete
-" Use neocomplete.
-let g:neocomplete#enable_cursor_hold_i = 1
-let g:neocomplete#cursor_hold_i_time = 500
-let g:neocomplete#enable_at_startup = 1
-let g:acp_enableAtStartup = 0
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-" smaller pop up
-let g:neocomplete#max_list = 10
-
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  " return neocomplete#close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
 
 
 " VimRoom
