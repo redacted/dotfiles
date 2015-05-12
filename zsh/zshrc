@@ -180,6 +180,7 @@ bindkey "\e[3~" delete-char
 
 alias mmv="noglob zmv -W" # change extension
 
+alias ec='emacsclient -n '
 alias clj='lein exec'
 alias evolver='rlwrap evolver'
 alias evolver_orig='~/local/bin/evolver'

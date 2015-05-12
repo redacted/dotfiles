@@ -2,6 +2,9 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
+;; initialization
+;; git clone --recursive http://github.com/syl20bnr/spacemacs .emacs.d
+
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration."
   (setq-default
@@ -17,13 +20,14 @@
      ;; Uncomment a layer name and press C-c C-c to install it
      ;; --------------------------------------------------------
      auto-completion
+     auctex
      better-defaults
      (git :variables
           git-gutter-use-fringe t)
-     ;; markdown
+     markdown
      org
+     osx
      python
-     company-mode
      syntax-checking
      clojure
      evil-commentary
@@ -72,7 +76,7 @@ before layers configuration."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Pragmata"
+   dotspacemacs-default-font '("PragmataPro"
                                :size 13
                                :weight normal
                                :width normal
