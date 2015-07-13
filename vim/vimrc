@@ -26,8 +26,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-classpath'
 
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'majutsushi/tagbar'

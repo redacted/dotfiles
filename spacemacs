@@ -19,15 +19,18 @@
      ;; Example of useful layers you may want to use right away
      ;; Uncomment a layer name and press C-c C-c to install it
      ;; --------------------------------------------------------
+     (colors :variables colors-enable-rainbow-identifiers t)
+     (git :variables git-gutter-use-fringe t)
      auto-completion
-     auctex
+     latex
      better-defaults
-     (git :variables
-          git-gutter-use-fringe t)
+     html
      markdown
      org
      osx
      python
+     scala
+     shell
      syntax-checking
      clojure
      evil-commentary
@@ -66,11 +69,13 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(zenburn
+
+   dotspacemacs-themes '(base16-eighties-dark
+                         zenburn
+                         monokai
                          solarized-dark
                          solarized-light
                          leuven
-                         monokai
                          )
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -142,6 +147,7 @@ before layers configuration."
    dotspacemacs-default-package-repository nil
    )
   ;; User initialization goes here
+  (setq speedbar-show-unknown-files t)
   )
 
 (defun dotspacemacs/config ()
