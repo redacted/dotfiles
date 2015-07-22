@@ -19,8 +19,9 @@
      ;; Example of useful layers you may want to use right away
      ;; Uncomment a layer name and press C-c C-c to install it
      ;; --------------------------------------------------------
-     (colors :variables colors-enable-rainbow-identifiers t)
-     (git :variables git-gutter-use-fringe t)
+     ;; (colors :variables colors-enable-rainbow-identifiers t)
+     git
+     version-control
      auto-completion
      latex
      better-defaults
