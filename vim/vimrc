@@ -34,8 +34,6 @@ Plugin 'neo4j-contrib/cypher-vim-syntax'
 Plugin 'bling/vim-airline'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'msanders/snipmate.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'terryma/vim-multiple-cursors'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimfiler.vim'
@@ -320,8 +318,8 @@ let g:jedi#popup_on_dot = 0
 
 " vim gitgutter
 " get some speed back
-let g:gitgutter_eager = 0
 
+let g:gitgutter_realtime = 0
 " -----------------------------------------------------------------------------
 " |                              Functions                                     |
 " -----------------------------------------------------------------------------

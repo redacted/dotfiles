@@ -25,3 +25,5 @@ source ~/.env.secure
 
 export GOPATH=$HOME/go
 set PATH $GOPATH/bin $PATH
+
+alias psql_tunnel='ssh -N -L 5433:ds-advertising.ckr1zpkxvsg6.eu-west-1.rds.amazonaws.com:5432 ads_marketing'

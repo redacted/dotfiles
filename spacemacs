@@ -156,6 +156,8 @@ before layers configuration."
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
   (global-linum-mode)
+  (setq tramp-default-method "ssh")
+  ;; (setq python-shell-interpreter "python")
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
