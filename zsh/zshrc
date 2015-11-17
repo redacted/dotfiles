@@ -280,27 +280,18 @@ function copyfile {
 # Battery plugin for oh-my-zsh            #
 ###########################################
 
-  function battery_pct() {
+function battery_pct() {
     typeset -F maxcapacity=$(ioreg -rc "AppleSmartBattery"| grep '^.*"MaxCapacity"\ =\ ' | sed -e 's/^.*"MaxCapacity"\ =\ //')
     typeset -F currentcapacity=$(ioreg -rc "AppleSmartBattery"| grep '^.*"CurrentCapacity"\ =\ ' | sed -e 's/^.*CurrentCapacity"\ =\ //')
     integer i=$(((currentcapacity/maxcapacity) * 100))
     echo $i
-  }
+}
 
-  function battery_pct_remaining() {
-    if [[ $(ioreg -rc AppleSmartBattery | grep -c '^.*"ExternalConnected"\ =\ No') -eq 1 ]] ; then
-      battery_pct
+function battery_pct_remaining() {
+  if [[ $(ioreg -rc AppleSmartBattery | grep -c '^.*"ExternalConnected"\ =\ No') -eq 1 ]] ; then
+  battery_pct
     else
       echo "External Power"
-    fi
-  }
-
-  function battery_time_remaining() {
-    if [[ $(ioreg -rc AppleSmartBattery | grep -c '^.*"ExternalConnected"\ =\ No') -eq 1 ]] ; then
-      timeremaining=$(ioreg -rc "AppleSmartBattery"| grep '^.*"AvgTimeToEmpty"\ =\ ' | sed -e 's/^.*"AvgTimeToEmpty"\ =\ //')
-      echo "~$((timeremaining / 60)):$((timeremaining % 60))"
-    else
-      echo "∞"
     fi
   }
 
