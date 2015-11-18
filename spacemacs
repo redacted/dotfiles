@@ -89,10 +89,10 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(gotham
+   dotspacemacs-themes '(darktooth
+                         gotham
                          sanityinc-solarized-dark
                          spacemacs-dark
-                         spacemacs-light
                          sanityinc-tomorrow-eighties
                          leuven
                          monokai
@@ -212,7 +212,7 @@ layers configuration. You are free to put any user code."
   (unless (server-running-p) (server-start))
   (global-linum-mode)
   (setq tramp-default-method "ssh")
-
+  (setq powerline-default-separator 'arrow)
   ;; OS X specific configuration
   (when (eq system-type 'darwin)
     (defadvice handle-delete-frame (around my-handle-delete-frame-advice activate)
@@ -235,3 +235,6 @@ layers configuration. You are free to put any user code."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+
+)
