@@ -38,6 +38,7 @@ values."
      osx
      python
      ruby
+     scala
      sql
      (shell :variables
             shell-default-height 30
